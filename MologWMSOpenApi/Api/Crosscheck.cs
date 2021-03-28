@@ -15,7 +15,7 @@ namespace MologWMSOpenApi.Internal
             this.mologWMSOpenApiClient = mologWMSOpenApiClient;
         }
 
-        public async Task<object> GetASN(Dictionary<string, object> dict)
+        public async Task<object> SelectASN(Dictionary<string, object> dict)
         {
             var contents = await ApiRunner.Get("/crosscheck/asn",
                 this.mologWMSOpenApiClient.appKey,
@@ -26,7 +26,7 @@ namespace MologWMSOpenApi.Internal
             return JsonConvert.DeserializeObject(contents);
         }
 
-        public async Task<object> GetDSO(Dictionary<string, object> dict)
+        public async Task<object> SelectDSO(Dictionary<string, object> dict)
         {
             var contents = await ApiRunner.Get("/crosscheck/dso",
                 this.mologWMSOpenApiClient.appKey,

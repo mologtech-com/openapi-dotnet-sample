@@ -82,12 +82,12 @@ namespace MologWMSOpenApiExample
             */
 
             /*
-            var crosscheckASN = await client.Crosscheck.GetASN(new Dictionary<string, object> {
+            var crosscheckASN = await client.Crosscheck.SelectASN(new Dictionary<string, object> {
                 { "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
                 { "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
             });
 
-            var crosscheckDSO = await client.Crosscheck.GetDSO(new Dictionary<string, object> {
+            var crosscheckDSO = await client.Crosscheck.SelectDSO(new Dictionary<string, object> {
                 { "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
                 { "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
             });
