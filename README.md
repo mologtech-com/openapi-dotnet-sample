@@ -29,7 +29,12 @@ This is .NET sample for Molog WMS Open API
 4. Call API action with proper parameters  
 
     ```
-	var inventoryList = await client.Inventory.GetByTime(1, 10);
+	var inventoryList = await client.Inventory.Get(new Dictionary<string, object> {
+        { "PAGE", 1 },
+        { "SIZE", 10 },
+        { "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
+        { "RECEIVED_DATE_TO", "2021-03-23T23:59:59+07:00" },
+    });
     ```
 5. For available API actions, check the [offcial documentation](https://app.mologtech.com/open-api-doc-th/)
 

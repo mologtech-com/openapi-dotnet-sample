@@ -34,11 +34,11 @@ namespace MologWMSOpenApi.Internal
             return sb.ToString();
         }
 
-        private static (HttpClient, string) GetHttpClientUrl(string endpoint, string path, string appKey, string appSecret, string accessToken, Dictionary<string, string> queryDict)
+        private static (HttpClient, string) GetHttpClientUrl(string endpoint, string path, string appKey, string appSecret, string accessToken, Dictionary<string, object> queryDict)
         {
             if (queryDict == null)
             {
-                queryDict = new Dictionary<string, string>();
+                queryDict = new Dictionary<string, object>();
             }
             var handler = new HttpClientHandler();
             handler.ClientCertificateOptions = ClientCertificateOption.Manual;
@@ -48,10 +48,10 @@ namespace MologWMSOpenApi.Internal
                     return true;
                 };
 
-
+            var ts = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
             queryDict["APP_KEY"] = appKey;
-            queryDict["TIMESTAMP"] = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
-            queryDict["SIGN"] = HashRequest(path, queryDict["APP_KEY"], appSecret, queryDict["TIMESTAMP"]);
+            queryDict["TIMESTAMP"] = ts;
+            queryDict["SIGN"] = HashRequest(path, appKey, appSecret, ts);
             if (accessToken != null)
             {
                 queryDict["ACCESS_TOKEN"] = accessToken;
@@ -60,7 +60,7 @@ namespace MologWMSOpenApi.Internal
             return (new HttpClient(handler), BuildUrlQuery(endpoint + path, queryDict));
         }
 
-        private static string BuildUrlQuery(string url, Dictionary<string, string> dict)
+        private static string BuildUrlQuery(string url, Dictionary<string, object> dict)
         {
             var builder = new UriBuilder(url);
             if (builder.Port == 443)
@@ -77,7 +77,7 @@ namespace MologWMSOpenApi.Internal
             return builder.ToString();
         }
 
-        public static async Task<string> Get(string path, string appKey, string appSecret, string accessToken, Dictionary<string, string> dict)
+        public static async Task<string> Get(string path, string appKey, string appSecret, string accessToken, Dictionary<string, object> dict)
         {
             var (client, url) = GetHttpClientUrl(ApiRunner.enpoint, path, appKey, appSecret, accessToken, dict);
             var response = await client.GetAsync(url);
@@ -89,7 +89,7 @@ namespace MologWMSOpenApi.Internal
             return contents;
         }
 
-        public static async Task<string> Post(string path, string appKey, string appSecret, string accessToken, Dictionary<string, string> dict)
+        public static async Task<string> Post(string path, string appKey, string appSecret, string accessToken, Dictionary<string, object> dict)
         {
             string json = JsonConvert.SerializeObject(dict, Formatting.Indented);
             var httpContent = new StringContent(json);
@@ -105,7 +105,36 @@ namespace MologWMSOpenApi.Internal
             return contents;
         }
 
-        
+        public static async Task<string> Put(string path, string appKey, string appSecret, string accessToken, Dictionary<string, object> dict)
+        {
+            string json = JsonConvert.SerializeObject(dict, Formatting.Indented);
+            var httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var (client, url) = GetHttpClientUrl(ApiRunner.enpoint, path, appKey, appSecret, accessToken, null);
+            var response = await client.PutAsync(url, httpContent);
+            var contents = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw MologWMSOpenApiException.Create(contents);
+            }
+            return contents;
+        }
+
+
+        public static async Task<string> Delete(string path, string appKey, string appSecret, string accessToken, Dictionary<string, object> dict)
+        {
+            var (client, url) = GetHttpClientUrl(ApiRunner.enpoint, path, appKey, appSecret, accessToken, dict);
+            var response = await client.DeleteAsync(url);
+            var contents = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw MologWMSOpenApiException.Create(contents);
+            }
+            return contents;
+        }
+
+
 
     }
 }
