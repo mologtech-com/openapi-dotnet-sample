@@ -15,7 +15,7 @@ namespace MologWMSOpenApi.Internal
             this.mologWMSOpenApiClient = mologWMSOpenApiClient;
         }
 
-        public async Task<object> Get(Dictionary<string, object> dict)
+        public async Task<object> Select(Dictionary<string, object> dict)
         {
             var contents = await ApiRunner.Get("/inventory/list",
                 this.mologWMSOpenApiClient.appKey,

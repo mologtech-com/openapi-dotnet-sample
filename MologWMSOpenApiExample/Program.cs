@@ -26,7 +26,7 @@ namespace MologWMSOpenApiExample
             await client.RefreshToken();
 
             /*
-            var inventoryList = await client.Inventory.Get(new Dictionary<string, object> {
+            var inventoryList = await client.Inventory.Select(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
                //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
@@ -37,7 +37,7 @@ namespace MologWMSOpenApiExample
             */
 
             /*
-            var pickByTime = await client.Picked.GetByTime(new Dictionary<string, object> {
+            var pickByTime = await client.Picked.SelectByTime(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
                 //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
@@ -46,13 +46,13 @@ namespace MologWMSOpenApiExample
                 //{ "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
             });
 
-            var pickByJob = await client.Picked.GetByJob(new Dictionary<string, object> {
+            var pickByJob = await client.Picked.SelectByJob(new Dictionary<string, object> {
                 { "Rel1 No", "QQ" },
             });
             */
 
             /*
-            var packByTime = await client.Packed.GetByTime(new Dictionary<string, object> {
+            var packByTime = await client.Packed.SelectByTime(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
                 //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
@@ -61,13 +61,13 @@ namespace MologWMSOpenApiExample
                 //{ "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
             });
 
-            var packByJob = await client.Packed.GetByJob(new Dictionary<string, object> {
+            var packByJob = await client.Packed.SelectByJob(new Dictionary<string, object> {
                 { "Rel1 No", "QQ" },
             });
             */
 
             /*
-            var grByTime = await client.GR.GetByTime(new Dictionary<string, object> {
+            var grByTime = await client.GR.SelectByTime(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
                 //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
@@ -76,7 +76,7 @@ namespace MologWMSOpenApiExample
                 //{ "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
             });
 
-            var grByJob = await client.GR.GetByJob(new Dictionary<string, object> {
+            var grByJob = await client.GR.SelectByJob(new Dictionary<string, object> {
                 { "Rec1 No", "QQ" },
             });
             */
