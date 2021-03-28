@@ -13,7 +13,7 @@ namespace MologWMSOpenApi.Internal
 {
     public class ApiRunner
     {
-        private static string enpoint = "https://localhost:7900/rest";
+        private static string enpoint = "https://app.mologtech.com/rest";
 
         private static string HashRequest(string path, string appKey, string appSecretKey, string ts)
         {

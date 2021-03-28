@@ -17,10 +17,12 @@ namespace MologWMSOpenApiExample
         {
             var appKey = "0000000000000000";
             var appSecret = "TESTaytGjOqduSZnZDymxhPWgezyiMYr";
+            var username = "user1";
+            var password = "user@pass123";
             var client = new MologWMSOpenApiClient(appKey, appSecret);
 
             // Create Token API
-            await client.CreateToken("user", "pass@word123");
+            await client.CreateToken(username, password);
 
             // If Access Token is expired, you can use refresh token
             await client.RefreshToken();
@@ -34,9 +36,9 @@ namespace MologWMSOpenApiExample
                // { "SKU_CODE", "PILLOWB001" },
                // { "ON_HAND_ONLY", "true" }
             });
-            */
+            
 
-            /*
+            
             var pickByTime = await client.Picked.SelectByTime(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
@@ -49,9 +51,9 @@ namespace MologWMSOpenApiExample
             var pickByJob = await client.Picked.SelectByJob(new Dictionary<string, object> {
                 { "Rel1 No", "QQ" },
             });
-            */
+            
 
-            /*
+            
             var packByTime = await client.Packed.SelectByTime(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
@@ -64,9 +66,9 @@ namespace MologWMSOpenApiExample
             var packByJob = await client.Packed.SelectByJob(new Dictionary<string, object> {
                 { "Rel1 No", "QQ" },
             });
-            */
+            
 
-            /*
+            
             var grByTime = await client.GR.SelectByTime(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
@@ -79,9 +81,9 @@ namespace MologWMSOpenApiExample
             var grByJob = await client.GR.SelectByJob(new Dictionary<string, object> {
                 { "Rec1 No", "QQ" },
             });
-            */
+            
 
-            /*
+            
             var crosscheckASN = await client.Crosscheck.SelectASN(new Dictionary<string, object> {
                 { "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
                 { "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
@@ -91,9 +93,9 @@ namespace MologWMSOpenApiExample
                 { "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
                 { "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
             });
-            */
+            
 
-            /*
+            
             var createPartner = await client.Partner.CreateUpdate(new Dictionary<string, object> {
                 { "DATA", new[] {
                         new Dictionary<string, object> {
@@ -104,9 +106,9 @@ namespace MologWMSOpenApiExample
                     }
                 }
             });
-            */
+            
 
-            /*
+            
             var createSKU = await client.SKU.CreateUpdate(new Dictionary<string, object> {
                 { "DATA", new[] {
                         new Dictionary<string, object> {
@@ -157,9 +159,9 @@ namespace MologWMSOpenApiExample
                     }
                 }
             });
-            */
+            
 
-            /*
+            
             var createASN = await client.ASN.Create(new Dictionary<string, object> {
                 { "Rec1 No", "REC0000000001" },
                 { "EXP_RECEIVED_DATE", "2021-03-23T00:00:00+07:00" },
@@ -171,9 +173,9 @@ namespace MologWMSOpenApiExample
                     }
                 }
             });
-            */
+            
 
-            /*
+            
             var createPSO = await client.PSO.Create(new Dictionary<string, object> {
                 { "Rel1 No", "REC0000000001" },
                 { "PSO_DATE", "2021-03-23T00:00:00+07:00" },
@@ -185,9 +187,9 @@ namespace MologWMSOpenApiExample
                     }
                 }
             });
-            */
+            
 
-            /*
+            
             var createDSO = await client.DSO.Create(new Dictionary<string, object> {
                 { "Rel1 No", "REC0000000002" },
                 { "PSO_DATE", "2021-03-23T00:00:00+07:00" },
@@ -214,6 +216,7 @@ namespace MologWMSOpenApiExample
                 { "Rel1 No", "REC0000000002" },
             });
             */
+
             // If you want sign out on Open API
             var deleteTokenResult = await client.DeleteToken();
         }
