@@ -120,9 +120,8 @@ This is .NET sample for Molog WMS Open API
 
 ## Tools
 
-- node - runtime
-- eslint - linter
-- vscode - recommended text editor
+- .NET Core - runtime
+- Visual Studio 2019 - recommended text editor
 
 # Reference
 ## MOLOG - OPEN API Offcial Documentation
