@@ -48,15 +48,19 @@ This is .NET sample for Molog WMS Open API
 
 | Confirm Packed                 | Status             |
 | ------------------------------ | ------------------ |
-| Select Confirm Packed by Time  | :heavy_check_mark: |
 | Select Confirm Packed by Job   | :heavy_check_mark: |
 
 ---
 
 | Confirm Picked                 | Status             |
 | ------------------------------ | ------------------ |
-| Select Confirm Picked by Time  | :heavy_check_mark: |
 | Select Confirm Picked by Job   | :heavy_check_mark: |
+
+---
+
+| Confirm Shipped                 | Status             |
+| ------------------------------ | ------------------ |
+| Select Confirm Shipped by Job   | :heavy_check_mark: |
 
 ---
 
@@ -78,7 +82,6 @@ This is .NET sample for Molog WMS Open API
 
 | Goods Receive                  | Status             |
 | ------------------------------ | ------------------ |
-| Select Goods Receive by Time   | :heavy_check_mark: |
 | Select Goods Receive ฺby Job    | :heavy_check_mark: |
 
 ---
