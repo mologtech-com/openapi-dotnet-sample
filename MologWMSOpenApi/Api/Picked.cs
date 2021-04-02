@@ -15,17 +15,6 @@ namespace MologWMSOpenApi.Internal
             this.mologWMSOpenApiClient = mologWMSOpenApiClient;
         }
 
-        public async Task<object> SelectByTime(Dictionary<string, object> dict)
-        {
-            var contents = await ApiRunner.Get("/picked/by_time",
-                this.mologWMSOpenApiClient.appKey,
-                this.mologWMSOpenApiClient.appSecret,
-                this.mologWMSOpenApiClient.tokenModel.AccessToken,
-                dict
-            );
-            return JsonConvert.DeserializeObject(contents);
-        }
-
         public async Task<object> SelectByJob(Dictionary<string, object> dict)
         {
             var contents = await ApiRunner.Get("/picked/by_job",
