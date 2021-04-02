@@ -16,6 +16,7 @@ namespace MologWMSOpenApi
         public MologWMSOpenApiInventory Inventory { get; }
         public MologWMSOpenApiPicked Picked { get; }
         public MologWMSOpenApiPacked Packed { get; }
+        public MologWMSOpenApiShipped Shipped { get; }
         public MologWMSOpenApiGR GR { get; }
         public MologWMSOpenApiCrosscheck Crosscheck { get; }
 
@@ -33,6 +34,7 @@ namespace MologWMSOpenApi
             this.Inventory = new MologWMSOpenApiInventory(this);
             this.Picked = new MologWMSOpenApiPicked(this);
             this.Packed = new MologWMSOpenApiPacked(this);
+            this.Shipped = new MologWMSOpenApiShipped(this);
             this.GR = new MologWMSOpenApiGR(this);
             this.Crosscheck = new MologWMSOpenApiCrosscheck(this);
             this.ASN = new MologWMSOpenApiASN(this);

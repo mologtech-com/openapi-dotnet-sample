@@ -31,7 +31,7 @@ namespace MologWMSOpenApiExample
             var inventoryList = await client.Inventory.Select(new Dictionary<string, object> {
                 { "PAGE", 1 },
                 { "SIZE", 10 },
-               //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
+               { "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
                // { "RECEIVED_DATE_TO", "2021-03-23T23:59:59+07:00" },
                // { "SKU_CODE", "PILLOWB001" },
                // { "ON_HAND_ONLY", "true" }
@@ -39,50 +39,22 @@ namespace MologWMSOpenApiExample
             
 
             
-            var pickByTime = await client.Picked.SelectByTime(new Dictionary<string, object> {
-                { "PAGE", 1 },
-                { "SIZE", 10 },
-                //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
-                //{ "RECEIVED_DATE_TO", "2021-03-23T23:59:59+07:00" },
-                //{ "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
-                //{ "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
-            });
-
             var pickByJob = await client.Picked.SelectByJob(new Dictionary<string, object> {
                 { "Rel1 No", "QQ" },
             });
             
-
-            
-            var packByTime = await client.Packed.SelectByTime(new Dictionary<string, object> {
-                { "PAGE", 1 },
-                { "SIZE", 10 },
-                //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
-                //{ "RECEIVED_DATE_TO", "2021-03-23T23:59:59+07:00" },
-                //{ "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
-                //{ "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
-            });
-
             var packByJob = await client.Packed.SelectByJob(new Dictionary<string, object> {
                 { "Rel1 No", "QQ" },
             });
-            
 
-            
-            var grByTime = await client.GR.SelectByTime(new Dictionary<string, object> {
-                { "PAGE", 1 },
-                { "SIZE", 10 },
-                //{ "RECEIVED_DATE_FROM", "2021-03-23T00:00:00+07:00" },
-                //{ "RECEIVED_DATE_TO", "2021-03-23T23:59:59+07:00" },
-                //{ "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
-                //{ "CREATE_DATE_TO", "2021-03-23T23:59:59+07:00" },
+            var shipByJob = await client.Shipped.SelectByJob(new Dictionary<string, object> {
+                { "Rel1 No", "QQ" },
             });
-
+            
             var grByJob = await client.GR.SelectByJob(new Dictionary<string, object> {
                 { "Rec1 No", "QQ" },
             });
             
-
             
             var crosscheckASN = await client.Crosscheck.SelectASN(new Dictionary<string, object> {
                 { "CREATE_DATE_FROM", "2021-03-23T00:00:00+07:00" },
